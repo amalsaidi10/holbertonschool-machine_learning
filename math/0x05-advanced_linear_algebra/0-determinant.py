@@ -1,4 +1,5 @@
 
+#!/usr/bin/env python3
 def determinant(matrix):
   
     if type(matrix) is not list or not matrix:
