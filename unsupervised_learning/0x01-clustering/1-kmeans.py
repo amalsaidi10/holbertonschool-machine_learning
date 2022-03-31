@@ -1,13 +1,18 @@
+6 sloc)  1.17 KB
+   
 #!/usr/bin/env python3
-""""k means"""
+""" K-means """
 import numpy as np
+
+
 def classes(X, C):
+    """assigne each point to a cluster """
     Xe = np.expand_dims(X, axis=1)
     Ce = np.expand_dims(C, axis=0)
     D = np.sum(np.square(Xe - Ce), axis=2)
-    clss = np.argmin(D, axis=1) # il parcourt pour chaque ligne
-                                # toutes les colonnes et affiche l'indice de colonne qui min valu
+    clss = np.argmin(D, axis=1)
     return clss
+
 
 def kmeans(X, k, iterations=1000):
     """performs kmeans on a dataset"""
@@ -17,10 +22,11 @@ def kmeans(X, k, iterations=1000):
         return None, None
     if type(iterations) is not int or int(iterations) != iterations or iterations < 1:
         return None, None
+    _, d = X.shape
+    mins = np.min(X, axis=0)
+    maxs = np.max(X, axis=0)
 
-    mins=np.min(X,axis=0) 
-    maxs=np.max(X,axis=0) 
-    C = initialize(X, k)
+    C = np.random.uniform(mins, maxs, size=(k, d))
     nC = C.copy()
     for _ in range(iterations):
         clss = classes(X, C)
@@ -29,7 +35,7 @@ def kmeans(X, k, iterations=1000):
             if X[indices].shape[0] > 0:
                 nC[i] = np.mean(X[indices], axis=0)
             else:
-                nC[i] =np.random.uniform(mins,maxs)
+                nC[i] = np.random.uniform(mins, maxs)
         if np.array_equal(nC, C):
             break
         C = nC.copy()
