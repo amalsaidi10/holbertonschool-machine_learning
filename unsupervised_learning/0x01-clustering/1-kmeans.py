@@ -1,5 +1,4 @@
-6 sloc)  1.17 KB
-   
+
 #!/usr/bin/env python3
 """ K-means """
 import numpy as np
