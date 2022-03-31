@@ -9,6 +9,6 @@ def variance(X, C):
     Xe = np.expand_dims(X, axis=1)
     Ce = np.expand_dims(C, axis=0)
     distance = np.sum(np.square(Xe - Ce), axis=2)
-    distance_point_cluster = np.min(distance, axis=1)  #shape(n,)# distance between each point and her cluster 
+    distance_point_cluster = np.min(distance, axis=1)   
     var = np.sum( distance_point_cluster)
     return var
