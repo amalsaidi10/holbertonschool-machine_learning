@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+import numpy as np
+
+def variance(X, C):
+    if type(X) is not np.ndarray or X.ndim != 2:
+        return None
+    if type(C) is not np.ndarray or C.ndim != 2 or C.shape[1] != X.shape[1]:
+        return None
+    Xe = np.expand_dims(X, axis=1)
+    Ce = np.expand_dims(C, axis=0)
+    distance = np.sum(np.square(Xe - Ce), axis=2)
+    distance_point_cluster = np.min(distance, axis=1)  #shape(n,)# distance between each point and her cluster 
+    var = np.sum( distance_point_cluster)
+    return var
