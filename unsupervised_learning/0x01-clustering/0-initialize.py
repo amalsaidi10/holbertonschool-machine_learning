@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""initialize"""
 import numpy as np
 def initialize(X, k):
   d=X.shape[1]
