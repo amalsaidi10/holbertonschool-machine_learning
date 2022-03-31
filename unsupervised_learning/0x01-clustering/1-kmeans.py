@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """"k means"""
+import numpy as np
 def classes(X, C):
     Xe = np.expand_dims(X, axis=1)
     Ce = np.expand_dims(C, axis=0)
