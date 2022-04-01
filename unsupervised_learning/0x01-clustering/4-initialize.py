@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import numpy as np
-
+kmeans = __import__('1-kmeans').kmeans
 def initialize(X, k):
     """initializes variables for a Gaussian Mixture Model"""
     if type(X) is not np.ndarray or X.ndim != 2:
