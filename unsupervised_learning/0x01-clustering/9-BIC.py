@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
+""" BIC """
 import numpy as np
 expectation_maximization = __import__('8-EM').expectation_maximization
+
 
 def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
     """calculates BIC over various """
@@ -21,14 +23,17 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
         return None, None, None, None
     if type(verbose) is not bool:
         return None, None, None, None
+
     b = np.zeros(kmax + 1 - kmin)
     l = np.zeros(kmax + 1 - kmin)
     results = []
+
     for k in range(kmin, kmax + 1):
         pi, m, S, _, l[k - kmin] = expectation_maximization(X, k, iterations=iterations, tol=tol, verbose=verbose)
         results.append((pi, m, S))
         p = k * (d + 2) * (d + 1) / 2 - 1
         b[k - kmin] = p * np.log(n) - 2 * l[k - kmin]
+
     amin = np.argmin(b)
     best_k = amin + kmin
     best_result = results[amin]
