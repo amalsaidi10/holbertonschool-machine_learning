@@ -60,15 +60,14 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
     log_likelihoods = []
     BICs = []
     for cluster_count in range(kmin, kmax + 1):
-        priors, centroids, covariances, responsibilities, log_likelihood = \
+        priors, centroids, covariances, responsibilities, log_likelihood = 
             expectation_maximization(
                 X, cluster_count, iterations, tol, verbose)
         results.append((priors, centroids, covariances))
         log_likelihoods.append(log_likelihood)
         parameter_count = (
             cluster_count * (dimention_count + 2) * (dimention_count + 1) / 2
-            - 1
-        )
+            - 1 )
         BICs.append(
              np.log(sample_count) * parameter_count - 2 * log_likelihood)
 
