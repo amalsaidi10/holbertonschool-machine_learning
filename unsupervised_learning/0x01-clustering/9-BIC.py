@@ -60,7 +60,7 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
     log_likelihoods = []
     BICs = []
     for cluster_count in range(kmin, kmax + 1):
-        priors, centroids, covariances, responsibilities, log_likelihood = 
+        priors, centroids, covariances, responsibilities, log_likelihood = \
             expectation_maximization(
                 X, cluster_count, iterations, tol, verbose)
         results.append((priors, centroids, covariances))
