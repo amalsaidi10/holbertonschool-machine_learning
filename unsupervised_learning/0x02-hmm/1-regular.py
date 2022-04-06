@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 def regular(P):
   n= P.shape[0]
   d=P.shape[1]
