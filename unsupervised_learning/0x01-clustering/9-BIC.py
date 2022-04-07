@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Defines `BIC`. """
+"""Defines BIC"""
 import numpy as np
 expectation_maximization = __import__('8-EM').expectation_maximization
 
@@ -55,8 +55,7 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
             type(verbose) is not bool
             ):
         return fail
-    BICs = np.zeros(kmax + 1 - kmin)
-    log_likelihood = np.zeros(kmax + 1 - kmin)
+
     results = []
     log_likelihoods = []
     BICs = []
@@ -83,6 +82,3 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
         np.array(log_likelihoods),
         np.array(BICs)
     )
-
-
-   
