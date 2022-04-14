@@ -5,8 +5,8 @@ def matrix_shape(matrix):
       You can assume all elements in the same dimension are of the same type/shape
       The shape should be returned as a list of integers
   """
-  shape = []
-  while type(matrix) is list and len(matrix) > 0:
-      shape.append(len(matrix))
-      matrix = matrix[0]
-  return shape
+    shape = []
+    while type(matrix) is list and len(matrix) > 0:
+       shape.append(len(matrix))
+       matrix = matrix[0]
+    return shape
