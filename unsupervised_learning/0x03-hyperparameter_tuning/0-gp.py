@@ -10,5 +10,5 @@ class GaussianProcess:
         self.K = self.kernel(X, X) #cov(x,x)
 
     def kernel(self, X1, X2):
-      K = (self.sigma_f**2) * np.exp(np.square(X1.T -  X2) / -(2 * (self.l ** 2)))
+      K = (self.sigma_f ** 2) * np.exp(np.square(X1.T -  X2) / - (2 * (self.l ** 2)))
       return K 
