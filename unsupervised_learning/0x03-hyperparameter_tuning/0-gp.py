@@ -4,6 +4,7 @@ import numpy as np
 
 
 class GaussianProcess:
+    """initialize GaussianProcess"""
     def __init__(self, X, Y, l=1, sigma_f=1):
         self.X = X
         self.Y = Y
