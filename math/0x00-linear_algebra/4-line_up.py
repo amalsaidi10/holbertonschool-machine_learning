@@ -5,9 +5,10 @@ adds two arrays element-wise
 
 
 def add_arrays(arr1, arr2) :
+    """add array"""
     new_arr = []
     if len(arr1) != len(arr2) :
-      return None
+       return None
     for i in range(len(arr1)) :
-      new_arr.append(arr1[i] + arr2[i])
-    return new_arr 
+        new_arr.append(arr1[i] + arr2[i])
+    return new_arr
