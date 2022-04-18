@@ -3,6 +3,7 @@
 
 
 def mat_mul(mat1, mat2):
+    """ multiplication"""
     if not len(mat1) or len(mat1[0]) != len(mat2) or not len(mat2) or not \
        len(mat2[0]):
         return None
