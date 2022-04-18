@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 
         
-  def np_slice(matrix, axes={}):
-    """This returns a slice of an ndarray"""
-      for a in sorted(axes.keys()):
+def np_slice(matrix, axes={}):
+"""This returns a slice of an ndarray"""
+        for a in sorted(axes.keys()):
 
           val = axes[a]
           if len(val) == 3:
@@ -27,4 +28,4 @@
           slc[a] = s
           matrix = matrix[tuple(slc)]
 
-     return matrix
+        return matrix
