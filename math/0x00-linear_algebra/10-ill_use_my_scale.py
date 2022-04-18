@@ -3,6 +3,6 @@
 
 
 def np_shape(matrix):
-"""return matrix shape"""
-  return matrix.shape
+""" matrix shape"""
+    return matrix.shape
   
