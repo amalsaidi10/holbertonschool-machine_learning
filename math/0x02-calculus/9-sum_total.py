@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""recursive method"""
+"""
+This module contains the function summation_i_squared(n)
+"""
 
 
 def summation_i_squared(n):
-    if n < 1:
+    """This function calculates the sum of i^2 from i=1 to n"""
+    if type(n) is not int or n < 1:
         return None
-    if n == 1:
-        return 1
-    return n ** 2 + summation_i_squared(n - 1)
-  
+    return int(n*(n+1)*(2*n+1)/6)
