@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""integral"""
+"""
+integral
+"""
 
 
 def poly_integral(poly, C=0):
