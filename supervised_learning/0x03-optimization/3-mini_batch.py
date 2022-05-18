@@ -26,17 +26,18 @@ def train_mini_batch(
     """
 
     with tf.Session() as session:
-        store = tf.train.import_meta_graph("{}.meta".format(load_path))
-        store.restore(session, load_path)
-        graph = tf.get_default_graph()
+        saver = tf.train.import_meta_graph(load_path + '.meta')
+        saver.restore(session, load_path)
 
-        m = X_train.shape[0]
-        steps = m //( batch_size + 1 )
-        x = graph.get_collection('x')[0]
-        y = graph.get_collection('y')[0]
-        accuracy = graph.get_collection('accuracy')[0]
-        loss = graph.get_collection('loss')[0]
-        train_op = graph.get_collection('train_op')[0]
+        # Restore variables
+        x = tf.get_collection('x')[0]
+        y = tf.get_collection('y')[0]
+        accuracy = tf.get_collection('accuracy')[0]
+        loss = tf.get_collection('loss')[0]
+        train_op = tf.get_collection('train_op')[0]
+
+        training_data = {x: X_train, y: Y_train}
+        validation_data = {x: X_valid, y: Y_valid}
 
         for epoch in range(epochs + 1):
             train_accuracy, train_cost = session.run(
@@ -73,7 +74,7 @@ def train_mini_batch(
                     feed_dict={x: x_batch, y: y_batch}
                 )
 
-                if  step % 100 == 0:
+                if (step + 1) % 100 == 0:
                     step_accuracy, step_cost = session.run(
                         [accuracy, loss], feed_dict={x: x_batch, y: y_batch}
                     )
