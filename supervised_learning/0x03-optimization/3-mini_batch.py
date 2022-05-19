@@ -59,7 +59,7 @@ def train_mini_batch(
             x_shuffle, y_shuffle = shuffle_data(X_train, Y_train)
 
             # Loop over the training data
-            for step in range(steps):
+            for step in range(1,steps + 1):
                 start = batch_size * step
                 end = batch_size * (step + 1)
 
@@ -73,7 +73,7 @@ def train_mini_batch(
                     feed_dict={x: x_batch, y: y_batch}
                 )
 
-                if (step ) % 100 == 0:
+                if step  % 100 == 0:
                     step_accuracy, step_cost = session.run(
                         [accuracy, loss], feed_dict={x: x_batch, y: y_batch}
                     )
