@@ -57,24 +57,24 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
 
             batch_start, batch_end, step = 0, batch_size, 1
-            
-            X_batch = X_shuffled[batch_start:batch_end]
-            Y_batch = Y_shuffled[batch_start:batch_end]
+            while epoch < epochs:
+                X_batch = X_shuffled[batch_start:batch_end]
+                Y_batch = Y_shuffled[batch_start:batch_end]
 
-            mini_batch = {x: X_batch, y: Y_batch}
-            session.run(train_op, mini_batch)
+                mini_batch = {x: X_batch, y: Y_batch}
+                session.run(train_op, mini_batch)
 
-            # Print metrics
-            if step % 100 == 0:
-                s_cost, s_accuracy = session.run(metrics, mini_batch)
-                print("\tStep {}:".format(step))
-                print("\t\tCost: {}".format(s_cost))
-                print("\t\tAccuracy: {}".format(s_accuracy))
+                # Print metrics
+                if step % 100 == 0:
+                    s_cost, s_accuracy = session.run(metrics, mini_batch)
+                    print("\tStep {}:".format(step))
+                    print("\t\tCost: {}".format(s_cost))
+                    print("\t\tAccuracy: {}".format(s_accuracy))
 
-            if batch_end >= len(X_shuffled):
-                break
-            batch_start += batch_size
-            batch_end += batch_size
-            step += 1
+                if batch_end >= len(X_shuffled):
+                    break
+                batch_start += batch_size
+                batch_end += batch_size
+                step += 1
 
-            return saver.save(session, save_path)
+    return saver.save(session, save_path)
