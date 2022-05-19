@@ -31,7 +31,10 @@ def train_mini_batch(
         graph = tf.get_default_graph()
 
         m = X_train.shape[0]
-        steps = m // batch_size + 1
+        if m / batch_size ==  m // batch_size :
+            steps = (m // batch_size)
+        else :
+             steps = (m // batch_size) + 1
         x = graph.get_collection('x')[0]
         y = graph.get_collection('y')[0]
         accuracy = graph.get_collection('accuracy')[0]
@@ -73,7 +76,7 @@ def train_mini_batch(
                     feed_dict={x: x_batch, y: y_batch}
                 )
 
-                if (step + 1) % 100 == 0:
+                if step  % 100 == 0:
                     step_accuracy, step_cost = session.run(
                         [accuracy, loss], feed_dict={x: x_batch, y: y_batch}
                     )
