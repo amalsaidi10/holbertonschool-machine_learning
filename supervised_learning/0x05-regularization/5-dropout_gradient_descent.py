@@ -20,7 +20,6 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
     """
     m = Y.shape[1]
     weights_copy = weights.copy()
-
     for layer_index in range(L, 0, -1):
         A = cache["A" + str(layer_index)]
 
@@ -40,4 +39,5 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
             "W" + str(layer_index)] - (alpha * dw)
         weights["b" + str(layer_index)] = weights_copy[
             "b" + str(layer_index)] - (alpha * db)
+        return weights
         
