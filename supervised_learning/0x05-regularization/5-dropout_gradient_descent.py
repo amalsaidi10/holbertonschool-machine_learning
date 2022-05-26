@@ -20,17 +20,16 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
     """
     m = Y.shape[1]
     weights_copy = weights.copy()
-    for layer_index in range(L - 1, 0, -1):
-        A = cache["A" + str(layer_index)]
-
-        if layer_index == L:
-            dz = A - Y
-        else:
-            dz = np.multiply(
-                np.dot(weights_copy["W" + str(layer_index + 1)].T, dz),
-                (1 - np.power(A, 2)),
-            )
-            dz = (dz * cache["D" + str(layer_index)]) / keep_prob
+    A = cache["A" + str(layer_index)]
+    dz = A - Y
+    for layer_index in range(L , 0, -1):
+        
+   
+        dz = np.multiply(
+            np.dot(weights_copy["W" + str(layer_index + 1)].T, dz),
+            (1 - np.power(A, 2)),
+        )
+        dz = (dz * cache["D" + str(layer_index)]) / keep_prob
 
         dw = 1 / m * np.dot(dz, cache["A" + str(layer_index - 1)].T)
         db = 1 / m * np.sum(dz, axis=1, keepdims=True)
