@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-
 import tensorflow.keras as K
+"""create a function that build a model with keras"""
+
 
 def build_model(nx, layers, activations, lambtha, keep_prob):
+    """build sequential model"""
     network = K.models.Sequential()
     network.add(K.layers.Dense(layers[0], activation=activations[0], input_shape=(nx,), kernel_initializer=K.initializers.he_normal(), kernel_regularizer=K.regularizers.l2(lambtha)))
     if len(layers) > 1:
