@@ -123,4 +123,4 @@ class Yolo:
             prob = (1 / (1 + np.exp(-op[..., 5:])))
             box_class_probs.append(prob)
 
-        return (boxes, box_confidences, box_class_probs)
+        return boxes, box_confidences, box_class_probs
