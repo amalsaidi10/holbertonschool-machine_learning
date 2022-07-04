@@ -116,7 +116,7 @@ class Yolo:
 
             # Predict and set confidence
             confidence = (1 / (1 + np.exp(-op[..., 4])))
-            confidence = confidence.reshape(grid_h, grid_w, anchor_boxes, 1)
+           
             box_confidences.append(confidence)
 
             # Predict class probability
